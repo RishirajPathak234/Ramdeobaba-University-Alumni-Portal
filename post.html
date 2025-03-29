@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create a Job Post</title>
+    <link rel="stylesheet" href="css/post.css">
+
+</head>
+
+<body>
+    <header>
+        <div class="logo">Ramdeobaba College of Engineering and Management</div>
+        <nav>
+            <ul>
+                <li><a href="profile.html">Profile</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="jobs.html">Job Posts</a></li>
+                <li><a href="forum.html">Forum</a></li>
+            </ul>
+    </header>
+
+    <section id="jobPost">
+        <form method="post" action="">
+            <div id="jobPost" class="messageDiv" style="display:none;"></div>
+            <h2 class="heading-100"> Create a new Job Post</h2>
+            <label for="jobTitle">Job Title:</label>
+            <input type="text" id="jobTitle" name="jobTitle" placeholder="Enter job title" required>
+
+            <label for="companyName">Company Name:</label>
+            <input type="text" id="companyName" name="companyName" placeholder="Enter company name" required>
+
+            <label for="jobDescription">Job Description:</label>
+            <textarea id="jobDescription" name="jobDescription" placeholder="Enter job description" required></textarea>
+
+            <label for="location">Location:</label>
+            <input type="text" id="location" name="location" placeholder="Enter location" required>
+
+            <label for="applyLink">Application Link:</label>
+            <input type="url" id="applyLink" name="applyLink" placeholder="Enter application link" required>
+
+            <button  type="submit" id="submit" class="btn-100">Post Job</button>
+        </form>
+
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Ramdeobaba College of Engineering and Management Alumni Platform | All rights reserved.</p>
+    </footer>
+    
+    <script type="module" src="js/post.js"></script>
+</body>
+
+</html>

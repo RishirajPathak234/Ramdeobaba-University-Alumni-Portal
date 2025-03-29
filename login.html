@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link rel="stylesheet" href="css/login.css">
+
+</head>
+<body>
+  <header>
+    <div class="logo">Ramdeobaba College of Engineering and Management</div>
+  </header>
+
+  <main>
+    <section class="login-container">
+      <h2>Login to Your Account</h2>
+      <form id="loginForm">
+        <div id="signInMessage" class="messageDiv" style="display:none;"></div>
+        <div class="form-group">
+          <label for="email">College Email ID</label>
+          <input type="email" id="email" name="email" placeholder="Enter your college email" required>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" placeholder="Enter your password" required>
+        </div>
+        <button type="submit" class="btn" id="submit">Login</button>
+      </form>
+      <p class="signup-link">Don't have an account? <a href="signup.html">Sign Up</a></p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 Ramdeobaba College of Engineering and Management Alumni Platform | All rights reserved.</p>
+  </footer>
+
+  <script src="js/login.js"></script>
+</body>
+</html>

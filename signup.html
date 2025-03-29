@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up</title>
+  <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script> 
+  <link rel="stylesheet" href="css/signup.css">
+  <!-- <script type="module" src="js/firebaseauth.js"></script> -->
+</head>
+<body>
+  <header>
+    <div class="logo">Ramdeobaba College of Engineering and Management</div>
+  </header>
+
+  <main>
+    <section class="signup-container">
+      <h2>Create a New Account</h2>
+      <form method="post" action="">
+        <div id="signUpMessage" class="messageDiv" style="display:none;"></div>
+      <form method="post" action="">
+        <div id="signUpMessage" class="messageDiv" style="display:none;"></div>
+        <div class="form-group">
+          <label for="name">Your Name</label>
+          <input type="name" id="name"  placeholder="Enter your full name" required>
+        </div>
+        <div class="form-group">
+          <label for="email">College Email ID</label>
+          <input type="email" id="email" name="email" placeholder="Enter your college email" required>
+        </div>
+        <dic class="form-group">
+          <label for="phone number">Mobile Number</label>
+          <input type="number" id="phoneNumber" name="phone number" placeholder="Enter Phone Number" required>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" placeholder="Create a password" required>
+        </div>
+        <div class="form-group">
+          <label for="confirmPassword">Confirm Password</label>
+          <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm your password" required>
+        </div>
+        <div class="form-group">
+          <label for="about">Tell Something About You</label>
+          <input type="text" id="about" class="about" placeholder="About You">
+        </div>
+
+        
+
+        <button type="submit" class="btn" id="submit">Sign Up</button>
+        <p class="login-link">Already have an account? <a href="login.html">Log In</a></p>
+      </form>
+      
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 Ramdeobaba College of Engineering and Management Alumni Platform | All rights reserved.</p>
+  </footer>
+
+
+  
+<script type="module" src="js/signup.js"></script>
+
+</body>
+</html>
