@@ -165,3 +165,86 @@ const displayPosts = (posts) => {
 
 // Trigger fetch on page load
 document.addEventListener("DOMContentLoaded", fetchPosts);
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Load 3D background and theme toggle
+    loadScript('js/3d-background.js');
+    loadScript('js/theme-toggle.js');
+    
+    
+    const sampleJobs = [
+      {
+        id: 1,
+        title: 'Software Engineer',
+        company: 'Tech Innovations Inc.',
+        description: 'We are looking for a skilled software engineer to join our team...',
+        location: 'Nagpur, India',
+        date: '2024-03-15',
+        applyLink: '#'
+      },
+      {
+        id: 2,
+        title: 'Data Scientist',
+        company: 'Analytics Pro',
+        description: 'Join our data science team to work on cutting-edge AI projects...',
+        location: 'Remote',
+        date: '2024-03-20',
+        applyLink: '#'
+      }
+    ];
+    
+    // Render jobs
+    const jobContainer = document.getElementById('jobContainer');
+    if (jobContainer) {
+      if (sampleJobs.length > 0) {
+        sampleJobs.forEach((job, index) => {
+          const jobCard = document.createElement('div');
+          jobCard.className = 'job-card';
+          jobCard.style.animationDelay = `${index * 0.1}s`;
+          
+          jobCard.innerHTML = `
+            <h3 class="job-title">${job.title}</h3>
+            <div class="company-name">${job.company}</div>
+            <p class="job-description">${job.description}</p>
+            <div class="job-meta">
+              <div class="job-location">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                ${job.location}
+              </div>
+              <div class="job-date">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                Posted on ${formatDate(job.date)}
+              </div>
+            </div>
+            <a href="${job.applyLink}" class="btn">Apply Now</a>
+          `;
+          
+          jobContainer.appendChild(jobCard);
+        });
+      } else {
+        jobContainer.innerHTML = `
+          <div class="empty-state">
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+            <h3>No job postings yet</h3>
+            <p>Be the first to post a job opportunity</p>
+          </div>
+        `;
+      }
+    }
+  });
+  
+  // Format date helper
+  function formatDate(dateString) {
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    return new Date(dateString).toLocaleDateString(undefined, options);
+  }
+  
+  // Helper function to load scripts
+  function loadScript(src) {
+    const script = document.createElement('script');
+    script.src = src;
+    script.async = true;
+    document.body.appendChild(script);
+  }
+  

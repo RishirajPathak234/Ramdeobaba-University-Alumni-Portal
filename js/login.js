@@ -23,4 +23,39 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   });
+
+  document.addEventListener('DOMContentLoaded', () => {
+    // Load 3D background and theme toggle
+    loadScript('js/3d-background.js');
+    loadScript('js/theme-toggle.js');
+    
+    // Form animation
+    const form = document.getElementById('loginForm');
+    if (form) {
+      form.classList.add('fade-in');
+      
+      // Add input focus animations
+      const inputs = form.querySelectorAll('input');
+      inputs.forEach(input => {
+        input.addEventListener('focus', () => {
+          input.parentElement.classList.add('focused');
+        });
+        
+        input.addEventListener('blur', () => {
+          if (!input.value) {
+            input.parentElement.classList.remove('focused');
+          }
+        });
+      });
+    }
+  });
+  
+  // Helper function to load scripts
+  function loadScript(src) {
+    const script = document.createElement('script');
+    script.src = src;
+    script.async = true;
+    document.body.appendChild(script);
+  }
+  
   

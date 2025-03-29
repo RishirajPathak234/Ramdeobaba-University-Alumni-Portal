@@ -120,3 +120,56 @@ document.getElementById("submit").addEventListener('click', function (e) {
         });
     showMessage("Job posted successfully !!", "jobPost")
     });
+
+    document.addEventListener('DOMContentLoaded', () => {
+        // Load 3D background and theme toggle
+        loadScript('js/3d-background.js');
+        loadScript('js/theme-toggle.js');
+        
+        // Form animation
+        const form = document.querySelector('form');
+        if (form) {
+          form.classList.add('fade-in');
+          
+          // Add input focus animations
+          const inputs = form.querySelectorAll('input, textarea');
+          inputs.forEach(input => {
+            input.addEventListener('focus', () => {
+              input.parentElement.classList.add('focused');
+            });
+            
+            input.addEventListener('blur', () => {
+              if (!input.value) {
+                input.parentElement.classList.remove('focused');
+              }
+            });
+          });
+          
+          // Form submission
+          form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Show success message (replace with actual form submission logic)
+            const messageDiv = document.getElementById('jobPost');
+            if (messageDiv) {
+              messageDiv.className = 'messageDiv success';
+              messageDiv.style.display = 'block';
+              messageDiv.textContent = 'Job post created successfully!';
+              
+              // Reset form
+              setTimeout(() => {
+                form.reset();
+              }, 1000);
+            }
+          });
+        }
+      });
+      
+      // Helper function to load scripts
+      function loadScript(src) {
+        const script = document.createElement('script');
+        script.src = src;
+        script.async = true;
+        document.body.appendChild(script);
+      }
+      

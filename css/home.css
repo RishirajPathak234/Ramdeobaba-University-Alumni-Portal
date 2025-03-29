@@ -1,138 +1,96 @@
-body {
-    font-family: Arial, sans-serif;
-  }
-  
-  header {
-    background: #003366;
-    color: white;
-    padding: 10px;
-    text-align: center;
-    border-radius: 15px;
-  }
-  
-  header .logo {
-    font-size: 24px;
-    font-weight: bold;
-  }
-  
-  header nav ul {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    gap: 15px;
-    text-align: center;
-    flex-wrap: nowrap;
-    align-items: baseline;
-    justify-content: center;
-  }
-  
-  header nav ul li {
-    display: inline;
-  }
-  
-  header nav ul li a {
-    color: white;
-    text-decoration: none;
-  }
-  
-  main {
-    padding: 40px;
-    text-align: center;
-  }
-  
-  .intro {
-    background: #003366;
-    color: white;
-    padding: 30px;
-    border-radius: 10px;
-  }
-  
-  .btn {
-    background-color: hwb(199 3% 9%);
-    color: #ffffff;
-    padding: 10px 15px;
-    text-decoration: none;
-    border-radius: 88px;
-    display: inline-block;
-    margin-top: 20px;
-  }
-  
-/* HTML: <div class="loader"></div> */
-/* Ensure preloader covers the entire screen */
-/* Ensure preloader covers the entire screen */
-#preloader {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #553dad; /* White background for the preloader */
+@import url('global.css');
+
+main {
+  min-height: calc(100vh - var(--header-height) - 60px);
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  z-index: 9999; /* Ensure it's on top */
-}
-
-/* Loader styling */
-.loader {
-  width: fit-content;
-  font-size: 30px;
-  font-family: monospace;
-  line-height: 1.4;
-  font-weight: bold;
-  background: 
-    linear-gradient(#000 0 0) left,
-    linear-gradient(#000 0 0) right;
-  background-repeat: no-repeat; 
-  border-right: 5px solid #0000;
-  border-left: 5px solid #0000;
-  background-origin: border-box;
+  padding: 2rem;
   position: relative;
-  animation: l9-0 2s infinite;
+  overflow: hidden;
 }
 
-.loader::before {
-  content: "Loading";
+.intro {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 3rem 2rem;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: var(--radius);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 2;
+  animation: fadeIn 1s ease, slideInUp 1s ease;
 }
 
-.loader::after {
-  content: "";
+.intro h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(45deg, var(--primary), var(--accent));
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.intro p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  color: var(--muted-foreground);
+}
+
+.intro .btn {
+  font-size: 1.1rem;
+  padding: 0.8rem 2rem;
+  animation: pulse 2s infinite;
+}
+
+/* Floating elements */
+.floating-element {
   position: absolute;
-  top: 100%;
-  left: 0;
-  width: 40px;
-  height: 100px;
-  background: 
-   linear-gradient(90deg, #000 4px, #0000 0 calc(100% - 4px), #000 0) bottom / 22px 20px,
-   linear-gradient(90deg, red 4px, #0000 0 calc(100% - 4px), red 0) bottom 10px left 0 / 22px 6px,
-   linear-gradient(#000 0 0) bottom 3px left 0 / 40px 16px, /* Adjusted size */
-   linear-gradient(#000 0 0) bottom 0 left 50% / 16px 32px; /* Adjusted size */
- background-repeat: no-repeat;
- animation: l9-1 2s infinite ;
+  border-radius: 50%;
+  background: linear-gradient(45deg, var(--primary-light), var(--accent));
+  opacity: 0.1;
+  filter: blur(20px);
+  z-index: 1;
 }
 
-/* Keyframe animation for loader effect */
-@keyframes l9-0 {
-  0%, 25%    { background-size: 50% 100%; }
-  25.1%, 75% { background-size: 0 0, 50% 100%; }
-  75.1%, 100% { background-size: 0 0, 0 0; }
+.floating-element:nth-child(1) {
+  width: 300px;
+  height: 300px;
+  top: 10%;
+  left: 10%;
+  animation: float 15s ease-in-out infinite;
 }
 
-@keyframes l9-1 {
-  25%   { background-position: bottom, bottom 54px left 0, bottom 3px left 0, bottom 0 left 50%; left: 0; }
-  25.1% { background-position: bottom, bottom 10px left 0, bottom 3px left 0, bottom 0 left 50%; left: 0; }
-  50%   { background-position: bottom, bottom 10px left 0, bottom 3px left 0, bottom 0 left 50%; left: calc(100% - 22px); }
-  75%   { background-position: bottom, bottom 54px left 0, bottom 3px left 0, bottom 0 left 50%; left: calc(100% - 22px); }
-  75.1% { background-position: bottom, bottom 10px left 0, bottom 3px left 0, bottom 0 left 50%; left: calc(100% - 22px); }
+.floating-element:nth-child(2) {
+  width: 200px;
+  height: 200px;
+  bottom: 20%;
+  right: 15%;
+  animation: float 12s ease-in-out infinite reverse;
 }
 
+.floating-element:nth-child(3) {
+  width: 150px;
+  height: 150px;
+  bottom: 30%;
+  left: 20%;
+  animation: float 10s ease-in-out infinite 2s;
+}
 
-  footer {
-    text-align: center;
-    position: fixed;
-    width: 100%;
-    bottom: 0;
+@keyframes float {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  50% { transform: translate(20px, 20px) rotate(10deg); }
+  100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+@media (max-width: 768px) {
+  .intro h2 {
+    font-size: 2rem;
   }
-  /* footer {
-    text-align: center;
-  } */
+  
+  .intro p {
+    font-size: 1rem;
+  }
+}

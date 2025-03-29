@@ -1,139 +1,124 @@
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #ffffff;
-  }
-  
-  header {
-    background: #003366;
-    color: white;
-    padding: 10px;
-    text-align: center;
-    border-radius: 15px;
-  }
-  
-  header .logo {
-    font-size: 24px;
-    font-weight: bold;
-  }
-  
-  header nav ul {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    gap: 15px;
-    text-align: center;
-    flex-wrap: nowrap;
-    align-items: baseline;
-      justify-content: center;
-    }
-  
-  header nav ul li {
-    display: inline;
-  }
-  
-  header nav ul li a {
-    color: white;
-    text-decoration: none;
-  }
-  
-  main {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background: #ffffff;
-  }
-  
+@import url('global.css');
+
+main {
+  min-height: calc(100vh - var(--header-height) - 60px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  position: relative;
+}
+
+.signup-container {
+  background-color: var(--card);
+  border-radius: var(--radius);
+  padding: 2.5rem;
+  width: 100%;
+  max-width: 550px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 2;
+  animation: fadeIn 0.8s ease, slideInUp 0.8s ease;
+}
+
+.signup-container h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: var(--primary);
+  font-size: 1.8rem;
+  position: relative;
+}
+
+.signup-container h2::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+  border-radius: 3px;
+}
+
+.signup-container .form-group {
+  margin-bottom: 1.5rem;
+}
+
+.signup-container .btn {
+  width: 100%;
+  margin-top: 1rem;
+  padding: 0.8rem;
+  font-size: 1rem;
+}
+
+.login-link {
+  text-align: center;
+  margin-top: 1.5rem;
+  color: var(--muted-foreground);
+}
+
+.login-link a {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.login-link a:hover {
+  color: var(--primary-light);
+  text-decoration: underline;
+}
+
+.about {
+  min-height: 100px;
+  resize: vertical;
+}
+
+/* 3D Form Effect */
+.signup-container {
+  transform-style: preserve-3d;
+  perspective: 1000px;
+  transition: transform 0.5s ease;
+}
+
+.signup-container:hover {
+  transform: translateY(-5px) rotateX(3deg);
+}
+
+.signup-container::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, var(--primary), var(--accent));
+  z-index: -1;
+  border-radius: calc(var(--radius) + 2px);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.signup-container:hover::before {
+  opacity: 1;
+}
+
+/* Input animation */
+.form-group {
+  position: relative;
+}
+
+.form-group input, .form-group textarea {
+  transition: all 0.3s ease;
+}
+
+.form-group input:focus, .form-group textarea:focus {
+  transform: translateY(-2px);
+}
+
+@media (max-width: 600px) {
   .signup-container {
-    background: white;
-    padding: 64px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    width: 300px;
-    text-align: center;
-    margin: 32px 5rem -8rem;
+    padding: 2rem 1.5rem;
   }
-  
-  h2 {
-    margin-bottom: 20px;
-  }
-  
-  .form-group {
-    margin-bottom: 15px;
-    text-align: left;
-  }
-  
-  .form-group label {
-    display: block;
-    font-size: 14px;
-    margin-bottom: 5px;
-    padding: 3px 3px 3px 3px;
-  }
-  
-  .form-group input {
-    width: 100%;
-    padding: 8px;
-    font-size: 14px;
-    margin-top: 5px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    box-shadow: inset 3px 2px 5px -1px rgb(88, 88, 88);
-  }
-  
-  .btn {
-    background-color: #003366;
-    color: white;
-    padding: 10px 15px;
-    text-decoration: none;
-    border-radius: 5px;
-    width: 100%;
-    cursor: pointer;
-  }
-  
-  .login-link {
-    margin: 16px 47px -5px;
-    font-size: 14px;
-  }
-  
-  .login-link a {
-    color: #003366;
-    text-decoration: none;
-  }
-  
-  .login-link a:hover {
-    text-decoration: underline;
-  }
-  footer {
-    text-align: center;
-  }
-
-  .messageDiv{
-    background-color: hsl(327,90%,28%);
-    color: #fff;
-    padding: 10px 20px;
-    margin: 10px;
-    border-radius: 5px;
-    font-size: 1rem;
-    opacity: 0;
-    animation: fadeOut 7s forwards;
-  }
-
-  footer p{
-    text-align: center;
-    padding: 10rem 0rem 0rem 0rem;
-    margin: 4rem 0rem 1rem;
-  }
-
-
-  .form-group .about{
-
-  width : 100%;
-    padding: 8px;
-    font-size: 14px;
-    margin-top: 5px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    box-shadow: inset 3px 2px 5px -1px rgb(88, 88, 88);
-  }
+}

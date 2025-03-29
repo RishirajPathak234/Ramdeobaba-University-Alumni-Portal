@@ -1,97 +1,142 @@
-body {
-    font-family: Arial, sans-serif;
-  }
-  
-  header {
-    background: #003366;
-    color: white;
-    padding: 10px;
-    text-align: center;
-    border-radius: 15px;
-  }
-  
-  header .logo {
-    font-size: 24px;
-    font-weight: bold;
-  }
-  
-  header nav ul {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    gap: 15px;
-    text-align: center;
-    flex-wrap: nowrap;
-    align-items: baseline;
-    justify-content: center;
-  }
-  
-  header nav ul li {
-    display: inline;
-  }
-  
-  header nav ul li a {
-    color: white;
-    text-decoration: none;
-  }
+@import url('global.css');
 
-  header nav ul li a {
-    color: white;
-    text-decoration: none;
-    transition: color 0.2s ease, transform 0.2s ease;
-    position: relative;
-    padding: 5px 10px;
-  }
-  
-  header nav ul li a::before {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 2px;
-    bottom: 0;
-    left: 0;
-    background-color: #61a8ee;
-    visibility: hidden;
-    transform: scaleX(0);
-    transition: all 0.3s ease-in-out;
-    background-color: #61a8ee; /* Matches the #003366 color */
-  }
-  
-  header nav ul li a:hover::before {
-    visibility: visible;
-    transform: scaleX(1);
-  }
-  
-  header nav ul li a:hover {
-    color: #61a8ee;
-    transform: scale(1.1);
-  }
-  
-  main {
-    padding: 20px;
-  }
-  
-  .forum {
-    padding: 20px;
-    background: #f9f9f9;
+main {
+  min-height: calc(100vh - var(--header-height) - 60px);
+  padding: 2rem;
+  position: relative;
+}
+
+.forum {
+  max-width: 1000px;
+  margin: 0 auto;
+  animation: fadeIn 0.8s ease;
+}
+
+.forum h2 {
+  text-align: center;
+  margin-bottom: 2.5rem;
+  color: var(--primary);
+  font-size: 2rem;
+  position: relative;
+}
+
+.forum h2::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+  border-radius: 3px;
+}
+
+#forumContainer {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+.forum-post {
+  background-color: var(--card);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  position: relative;
+  animation: fadeIn 0.8s ease, slideInUp 0.8s ease;
+}
+
+.forum-post:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.1);
+}
+
+.post-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.post-author {
+  font-weight: 500;
+  color: var(--primary);
+}
+
+.post-date {
+  font-size: 0.9rem;
+  color: var(--muted-foreground);
+}
+
+.post-title {
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  color: var(--foreground);
+}
+
+.post-content {
+  color: var(--muted-foreground);
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.post-actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.post-action {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--muted-foreground);
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.post-action:hover {
+  color: var(--primary);
+}
+
+/* Empty state */
+.empty-state {
+  text-align: center;
+  padding: 3rem;
+  background-color: var(--muted);
+  border-radius: var(--radius);
+  color: var(--muted-foreground);
+}
+
+/* Loading state */
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid var(--muted);
+  border-radius: 50%;
+  border-top-color: var(--primary);
+  animation: spin 1s linear infinite;
+}
+
+@media (max-width: 768px) {
+  .forum h2 {
+    font-size: 1.8rem;
   }
   
   .forum-post {
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-    margin-bottom: 15px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 1.2rem;
   }
-  footer p{
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-
+  
+  .post-title {
+    font-size: 1.2rem;
   }
-  footer {
-    text-align: center;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-  }
+}

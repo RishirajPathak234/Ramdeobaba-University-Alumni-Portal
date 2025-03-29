@@ -1,342 +1,139 @@
-body {
-  font-family: Arial, sans-serif;
-  /* background-image: url('/assets/rbu.jpeg');
-  backdrop-filter: blur(5px);
-  width: 100%; /* Covers the full width */
-  /* height: 100%; Covers the full height */
-  /* overflow: hidden; Prevents any unwanted scrolling */
-  /* background-size:cover ;
-  background-repeat: no-repeat;
-  background-position: center;  */
-  }
-  
-header {
-  background: #003366;
-  color: white;
-  padding: 10px;
-  text-align: center;
-  border-radius: 15px;
-}
-/* body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-} */
-
-/* header {
-  background: #003366;
-  color: white;
-  padding: 10px;
-  text-align: center;
-  border-radius: 15px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-} */
-
-header .logo {
-  font-size: 24px;
-  font-weight: bold;
-  margin: 0;
-  
-}
-
-header nav ul {
-  list-style: none;
-  padding: 0;
-  margin: 10;
-  display: flex;
-  gap: 15px;
-  text-align: center;
-  flex-wrap: nowrap;
-  align-items: center;
-  justify-content: center;
-}
-
-header nav ul li {
-  display: inline-block;
-}
-
-header nav ul li a {
-  color: white;
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
-
-
-
-
-  header nav ul li a {
-    color: white;
-    text-decoration: none;
-    transition: color 0.2s ease, transform 0.2s ease;
-    position: relative;
-    padding: 5px 10px;
-  }
-
-  header nav ul li a::before {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 2px;
-    bottom: 0;
-    left: 0;
-    background-color: #61a8ee;
-    visibility: hidden;
-    transform: scaleX(0);
-    transition: all 0.3s ease-in-out;
-    background-color: #61a8ee; /* Matches the #003366 color */
-  }
-
-  header nav ul li a:hover::before {
-    visibility: visible;
-    transform: scaleX(1);
-  }
-
-  header nav ul li a:hover {
-    color: #61a8ee;
-    transform: scale(1.1);
-  }h
+@import url('global.css');
 
 main {
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  min-height: calc(100vh - var(--header-height) - 60px);
+  padding: 2rem;
+  position: relative;
 }
 
-h2 {
-  color: rgb(10, 7, 7);
-  font-weight:1000 ;
-  font-size: xx-large;
+.overview {
+  max-width: 1200px;
+  margin: 0 auto;
+  animation: fadeIn 0.8s ease;
+}
+
+.overview h2 {
   text-align: center;
-  margin-top: -10px;
-  margin-bottom: 20px;
-  text-decoration: underline;
+  margin-bottom: 2.5rem;
+  color: var(--primary);
+  font-size: 2rem;
+  position: relative;
+}
+
+.overview h2::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+  border-radius: 3px;
 }
 
 .card-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: auto;
-  gap: 20px;
-  flex-wrap: wrap;
-  padding: 10px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
 }
 
 .card {
-  background: #003366;
-  padding: 15px;
-  margin: 0;
-  border-radius: 8px;
+  background-color: var(--card);
+  border-radius: var(--radius);
+  padding: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
   text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  animation: fadeIn 0.8s ease, slideInUp 0.8s ease;
+}
+
+.card:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.card:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.card h3 {
+  color: var(--primary);
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.card p {
+  color: var(--muted-foreground);
+  margin-bottom: 1.5rem;
+}
+
+.card .btn {
+  display: inline-block;
+  padding: 0.6rem 1.2rem;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  max-width: 300px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  height: 5px;
+  background: linear-gradient(90deg, var(--primary), var(--accent));
 }
 
-.card h3{
-  margin: 0;
-  padding: 0;
-  color: white;
+/* 3D Card Effect */
+.card {
+  transform-style: preserve-3d;
+  perspective: 1000px;
 }
 
-.btn {
-  background: #3689dd;
-  color: white;
-  padding: 10px 15px;
-  text-decoration: none;
-  border-radius: 5px;
-  text-align: center;
-  margin-top: 20px;
-  transition:  0.2s ease;
+.card:hover {
+  transform: translateY(-10px) rotateX(5deg);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
 }
 
-.btn:hover {
-  background: #0055cc;
+/* Floating background elements */
+.bg-element {
+  position: absolute;
+  border-radius: 50%;
+  background: linear-gradient(45deg, var(--primary-light), var(--accent));
+  opacity: 0.05;
+  filter: blur(30px);
+  z-index: -1;
 }
 
-footer {
-  text-align: center;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  background: rgba(255, 255, 255, 0);
-  color: hsl(0, 0%, 0%);
-  padding: 10px;
-  border-radius: 15px 15px 0 0;
+.bg-element-1 {
+  width: 400px;
+  height: 400px;
+  top: 10%;
+  right: 5%;
+  animation: float 20s ease-in-out infinite;
 }
 
-/* Responsive Design */
+.bg-element-2 {
+  width: 300px;
+  height: 300px;
+  bottom: 10%;
+  left: 5%;
+  animation: float 15s ease-in-out infinite reverse;
+}
+
+@keyframes float {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  50% { transform: translate(30px, 30px) rotate(10deg); }
+  100% { transform: translate(0, 0) rotate(0deg); }
+}
+
 @media (max-width: 768px) {
-  header nav ul {
-    gap: 10px;
-  }
-
   .card-container {
-    flex-direction: column;
-    gap: 15px;
+    grid-template-columns: 1fr;
   }
-
-  .card {
-    width: 90%;
-  }
-
-  .btn {
-    padding: 8px 12px;
-    font-size: 14px;
+  
+  .overview h2 {
+    font-size: 1.8rem;
   }
 }
-
-@media (min-width: 769px) {
-  .card-container {
-    gap: 20px;
-  }
-
-  .card {
-    padding: 30px;
-    margin: 30px;
-  }
-}  header .logo {
-    font-size: 24px;
-    font-weight: bold;
-  }
-  
-  header nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 10; /* Removes default margin */
-    display: flex;
-    gap: 15px;
-    text-align: center;
-    flex-wrap: nowrap;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  header nav ul li {
-    display: inline-block;
-  }
-  
-  header nav ul li a {
-    color: white;
-    text-decoration: none;
-  }
-  
-  main {
-    padding: 20px;
-  }
-  
-  /* h2 {
-    text-align: center;
-  } */
-
-  /* h3{
-    display: block;
-    font-size: 1.17em;
-    margin-block-start: 1em;
-    margin-block-end: 1em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-    font-weight: bold;
-    unicode-bidi: isolate;
-    text-align: center;
-  }
-
-  p {
-    display: block;
-    margin-block-start: 1em;
-    margin-block-end: 1em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-    unicode-bidi: isolate;
-    text-align: center;
-  } */
-
-  .card-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: auto; /* Adjusted for flexible height */
-    gap: 20px; /* Adds space between the cards */
-    flex-wrap: wrap; /* Allows wrapping for smaller screens */
-    padding: 10px; /* Adds padding for smaller screens */
-  }
-  
-  .card {
-    /* background: (8, 8, 135); */
-    padding: 15px; /* Reduced padding for smaller screens */
-    margin: 0; /* Reduced margin for better spacing on small devices */
-    border-radius: 8px;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 100%; /* Default width for mobile view */
-    max-width: 300px; /* Ensures consistent card size on larger screens */
-  }
-  
-  .card h3, .card p {
-    margin: 0; /* Removes default margins from h3 and p */
-    padding: 5px; /* Ensures no extra padding inside text elements */
-    color: white;
-
-  }
-  
-  .btn {
-    /* background: #003366; */
-    color: rgb(244, 248, 250);
-    padding: 10px 15px;
-    text-decoration: none;
-    border-radius: 5px;
-    text-align: center;
-    margin-top: 20px; /* Adds spacing between button and text */
-  }
-  
-  /* Responsive Design */
-  @media (max-width: 768px) {
-    header nav ul {
-        /* flex-direction: column; Stacks navigation links */
-        gap: 10px; /* Reduces gap between links */
-    }
-  
-    .card-container {
-        flex-direction: column; /* Stacks cards vertically */
-        gap: 15px; /* Adjusts gap for better spacing */
-    }
-  
-    .card {
-        width: 90%; /* Takes most of the screen width on mobile */
-    }
-  
-    .btn {
-        padding: 8px 12px; /* Adjusts button size for smaller screens */
-        font-size: 14px; /* Reduces font size for buttons */
-    }
-  }
-  
-  @media (min-width: 769px) {
-    .card-container {
-        gap: 20px; /* Larger gap for desktop view */
-    }
-  
-    .card {
-        padding: 30px; /* Slightly increased padding for desktop */
-        margin: 30px; /* Improved spacing on larger screens */
-    }
-  }
-footer {
-  text-align: center;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-}
-
-
-
-
-
-
-
